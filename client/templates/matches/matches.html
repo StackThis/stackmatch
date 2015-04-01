@@ -1,0 +1,35 @@
+<template name='Matches'>
+    {{#with scoreBoard}}
+  <section class="scoreboard scoreboard-p0">
+      <div class="player{{my.playerIdx}} {{whoseTurn my.turn}}">{{my.name}}: {{my.score}}</div>
+  </section>
+  <section class="scoreboard scoreboard-p1">
+      <div class="player{{your.playerIdx}} {{whoseTurn your.turn}}">{{your.name}}: {{your.score}}</div>
+  </section>
+    
+  <div class="matches">
+    <section class='match-container my-matches'>
+      <h3>My Matches</h3>
+      <ul class="scoreboard">
+        {{#each my.matches}}
+          <li id='grid-{{idx}}' class='{{class}}'>
+            <span class='icon-{{val}}'></span>
+            <p class='tiny-score'>{{score}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+    <section class='match-container your-matches'>
+      <h3>Challenger's Matches</h3>
+      <ul class="scoreboard">
+        {{#each your.matches}}
+          <li id='grid-{{idx}}' class='{{class}}'>
+            <span class='icon-{{val}}'></span>
+            <p class='tiny-score'>{{score}}</p>
+          </li>
+        {{/each}}
+      </ul>
+    </section>
+  </div>
+  {{/with}}
+</template>

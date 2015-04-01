@@ -1,0 +1,128 @@
+li.icon-:before {
+  content: "\f06c";
+  font-family: FontAwesome;
+  font-size: 1.7em;
+  opacity: 0.5;
+}
+
+.icon-1:before {
+  /*bomb*/
+  content: "\f1e2";
+  font-family: FontAwesome;
+}
+
+.icon-2:before {
+  /*bug*/
+  content: "\f188";
+  font-family: FontAwesome;
+}
+
+.icon-3:before {
+  /*binoculars*/
+  content: "\f1e5";
+  font-family: FontAwesome;
+}
+
+.icon-4:before {
+  /*bell*/
+  content: "\f0a2";
+  font-family: FontAwesome;
+}
+
+.icon-5:before {
+  /*apple*/
+  content: "\f179";
+  font-family: FontAwesome;
+}
+
+.icon-6:before {
+  /*automobile*/
+  content: "\f1b9";
+  font-family: FontAwesome;
+}
+
+.icon-7:before {
+  /*github*/
+  content: "\f09b";
+  font-family: FontAwesome;
+}
+
+.icon-8:before {
+  /*bicycle*/
+  content: "\f206";
+  font-family: FontAwesome;
+}
+
+.icon-9:before {
+  /*clock*/
+/*  position: absolute;
+  top: -100%;*/
+  content: "\f017";
+  font-family: FontAwesome;
+}
+
+.icon-10:before {
+  /*cogs*/
+  content: "\f085";
+  font-family: FontAwesome;
+}
+
+.icon-11:before {
+  /*coffee*/
+  content: "\f0f4";
+  font-family: FontAwesome;
+}
+
+.icon-12:before {
+  /*flask*/
+  content: "\f0c3";
+  font-family: FontAwesome;
+}
+
+.icon-13:before {
+  /*medkit*/
+  content: "\f0fa";
+  font-family: FontAwesome;
+}
+
+.icon-14:before {
+  /*microphone*/
+  content: "\f130";
+  font-family: FontAwesome;
+}
+
+.icon-15:before {
+  /*music*/
+  content: "\f001";
+  font-family: FontAwesome;
+}
+
+.icon-16:before {
+  /*moon-o*/
+  content: "\f186";
+  font-family: FontAwesome;
+}
+
+.icon-17:before {
+  /*paper-plane-o*/
+  content: "\f1d9";
+  font-family: FontAwesome;
+}
+
+.icon-18:before {
+  /*mortar-board*/
+  content: "\f19d";
+  font-family: FontAwesome;
+}
+
+.icon-19:before {
+  /*paperclip*/
+  content: "\f0c6";
+  font-family: FontAwesome;
+}
+
+.icon-20:before {
+  /*rocket*/
+  content: "\f135";
+  font-family: FontAwesome;
+}

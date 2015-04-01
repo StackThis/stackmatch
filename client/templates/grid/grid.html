@@ -1,0 +1,12 @@
+<template name='Grid'>
+  <section class='grid-container'>
+    <ul>
+      {{#each shuffledCards}}
+        <li id='grid-{{idx}}' class='{{class}}'>
+          <div class='icon-{{val}}'></div>
+          <div class='tiny-score'>{{score}}</div>
+        </li>
+      {{/each}}
+    </ul>
+  </section>
+</template>

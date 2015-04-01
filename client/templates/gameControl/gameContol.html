@@ -1,0 +1,17 @@
+<template name='GameControl'>
+  {{#if gameInProgress}}
+    <input type=button id='leaveGame' value='Leave Game'>
+    <section class="game-ui-flex">
+      {{> Grid}}
+      {{> Matches}}
+    </section>
+    {{else}}
+    <input type=button id='newGame' value='Start New Game'>
+    <p>Click a game below to join it.</p>
+    {{#each gamesWaiting}}
+      <p id='{{_id}}' class='waiting-queue'>
+        <i class="fa fa-toggle-right"></i> Waiting for challenger. (Game created at {{formatDate timestamp 'LT'}})
+      </p>
+    {{/each}}
+  {{/if}}
+</template>
