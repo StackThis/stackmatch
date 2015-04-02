@@ -64,21 +64,21 @@ li {
   transition: background-position 0.3s, color 0.3s;
 }
 
-.card-contents {
+/*.card-contents {
   display: flex;
   flex-flow: column wrap;
   display: -webkit-flex;
   -webkit-flex-flow: column wrap;
-}
+}*/
 
-.icon {
+/*.icon {
   flex-basis: 100%;
   -webkit-flex-basis: 100%;
-}
+}*/
 
 .tiny-score {
-  font-size: 1rem;
-  margin: 0;
+  font-size: 0.6em;
+  margin-top: -10px;
 }
 
 .scoreboard {
