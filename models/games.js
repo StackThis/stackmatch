@@ -8,6 +8,8 @@ Games.allow({
     }
     if (_.contains(fieldNames, 'players')) {
       return modifier.$addToSet.players;
+    } else {
+      return modifier.$pull.players;
     }
   },
 

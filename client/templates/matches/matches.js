@@ -34,6 +34,11 @@ Template.Matches.helpers({
               gameScore.your.turn = doc.players[i].myTurn;
               gameScore.your.matches = doc.players[i].matches;
             }
+          } else {
+            url = window.location.origin + '/#' + Session.get('gameId');
+            gameScore.your.name = 'Waiting for challenger';
+            gameScore.your.url = url;
+            gameScore.your.turn = true;
           }
         }
         return gameScore;

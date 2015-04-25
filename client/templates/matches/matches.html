@@ -1,35 +1,64 @@
 <template name='Matches'>
-    {{#with scoreBoard}}
-  <section class="scoreboard scoreboard-p0">
-      <div class="player{{my.playerIdx}} {{whoseTurn my.turn}}">{{my.name}}: {{my.score}}</div>
-  </section>
-  <section class="scoreboard scoreboard-p1">
-      <div class="player{{your.playerIdx}} {{whoseTurn your.turn}}">{{your.name}}: {{your.score}}</div>
-  </section>
+  {{#with scoreBoard}}
+
+    {{#if your.url}}
+      <section class='overlay'>
+        <div class='overlay-content'>
+          <h2 class='alert-blink'>Waiting for Challenger!</h2>
+          <h3 >To invite someone to play with you, copy and send them this link:</h3>
+          <p class='alert-blink'>{{your.url}}</p>
+          <p> Your game will start when an opponent joins.</p>
+        </div>
+      </section>
+    {{/if}}
+
     
-  <div class="matches">
-    <section class='match-container my-matches'>
-      <h3>My Matches</h3>
-      <ul class="scoreboard">
-        {{#each my.matches}}
-          <li id='grid-{{idx}}' class='{{class}}'>
-            <span class='icon-{{val}}'></span>
-            <p class='tiny-score'>{{score}}</p>
-          </li>
-        {{/each}}
-      </ul>
+      <!-- {{#if my}}
+      <section class='overlay'>
+        <div class='overlay-content'>
+          <h2 class='alert-blink'>Opponent has left the game.</h2>
+          <h3 >Please press the leave game button.</h3>
+        </div>
+      </section>
+      {{/if}} -->
+    
+    
+    <section class="scoreboard scoreboard-p0">
+      <div class="score player{{my.playerIdx}} {{whoseTurn my.turn}}">
+        {{my.name}}: {{my.score}}
+      </div>
     </section>
-    <section class='match-container your-matches'>
-      <h3>Challenger's Matches</h3>
-      <ul class="scoreboard">
-        {{#each your.matches}}
-          <li id='grid-{{idx}}' class='{{class}}'>
-            <span class='icon-{{val}}'></span>
-            <p class='tiny-score'>{{score}}</p>
-          </li>
-        {{/each}}
-      </ul>
+    <section class="scoreboard scoreboard-p1">
+      <div class="score player{{your.playerIdx}} {{whoseTurn your.turn}}">
+        {{your.name}}: {{your.score}}
+      </div>
     </section>
-  </div>
+    
+
+    <div class="matches">
+      <section class='match-container my-matches'>
+        <h3>My Matches</h3>
+        <ul class="scoreboard">
+          {{#each my.matches}}
+            <li id='grid-{{idx}}' class='{{class}}'>
+              <div class='icon icon-{{val}}'></div>
+              <div class='tiny-score'>{{score}}</div>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+      <section class='match-container your-matches'>
+        <h3>Opponent's Matches</h3>
+        <ul class="scoreboard">
+          {{#each your.matches}}
+            <li id='grid-{{idx}}' class='{{class}}'>
+              <div class='icon icon-{{val}}'></div>
+              <div class='tiny-score'>{{score}}</div>
+            </li>
+          {{/each}}
+        </ul>
+      </section>
+    </div>
+
   {{/with}}
 </template>

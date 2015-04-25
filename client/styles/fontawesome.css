@@ -5,9 +5,15 @@ li.icon-:before {
   opacity: 0.5;
 }
 
-.icon-1:before {
+.icon-0:before {
   /*bomb*/
   content: "\f1e2";
+  font-family: FontAwesome;
+}
+
+.icon-1:before {
+  /*camera-retro*/
+  content: "\f083";
   font-family: FontAwesome;
 }
 
@@ -42,8 +48,8 @@ li.icon-:before {
 }
 
 .icon-7:before {
-  /*github*/
-  content: "\f09b";
+  /*flag*/
+  content: "\f11e";
   font-family: FontAwesome;
 }
 
@@ -55,15 +61,13 @@ li.icon-:before {
 
 .icon-9:before {
   /*clock*/
-/*  position: absolute;
-  top: -100%;*/
   content: "\f017";
   font-family: FontAwesome;
 }
 
 .icon-10:before {
-  /*cogs*/
-  content: "\f085";
+  /*trophy*/
+  content: "\f091";
   font-family: FontAwesome;
 }
 
@@ -80,8 +84,8 @@ li.icon-:before {
 }
 
 .icon-13:before {
-  /*medkit*/
-  content: "\f0fa";
+  /*money*/
+  content: "\f0d6";
   font-family: FontAwesome;
 }
 
@@ -92,8 +96,8 @@ li.icon-:before {
 }
 
 .icon-15:before {
-  /*music*/
-  content: "\f001";
+  /*leaf*/
+  content: "\f06c";
   font-family: FontAwesome;
 }
 
@@ -124,5 +128,47 @@ li.icon-:before {
 .icon-20:before {
   /*rocket*/
   content: "\f135";
+  font-family: FontAwesome;
+}
+
+.icon-21:before {
+  /*lightbulb-o*/
+  content: "\f0eb";
+  font-family: FontAwesome;
+}
+
+.icon-22:before {
+  /*motorcycle*/
+  content: "\f21c";
+  font-family: FontAwesome;
+}
+
+.icon-23:before {
+  /*wrench*/
+  content: "\f0ad";
+  font-family: FontAwesome;
+}
+
+.icon-24:before {
+  /*cutlery*/
+  content: "\f0f5";
+  font-family: FontAwesome;
+}
+
+.icon-25:before {
+  /*paw*/
+  content: "\f1b0";
+  font-family: FontAwesome;
+}
+
+.icon-26:before {
+  /*shopping-cart*/
+  content: "\f07a";
+  font-family: FontAwesome;
+}
+
+.icon-27:before {
+  /*umbrella*/
+  content: "\f0e9";
   font-family: FontAwesome;
 }

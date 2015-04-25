@@ -1,10 +1,24 @@
 Template.GameControl.helpers ({
   gamesWaiting: function() {
-    return Games.find({players: {$size: 1}});
+    var gameList = Games.find({players: {$size: 1}, gameStatus: 'fresh'}).fetch();
+    if (gameList.length > 0) {
+      return gameList;
+    }
   },
 
   gameInProgress: function() {
+    var isDirty = Games.find({_id: Session.get('gameId'), gameStatus: 'dirty'});
+    if (isDirty.count()) {
+      Games.remove({_id: Session.get('gameId')});
+      Session.set('gameId', '');
+      localStorage.setItem('sm_gameId', '');
+      alert('Your opponent has left the game.');
+    }
     return Session.get('gameId');
+  },
+
+  gameCompleted: function() {
+    
   }
 });
 
@@ -18,29 +32,42 @@ Template.GameControl.events ({
       function(err, res) {
         Session.set('gameId', joinGameId);
         localStorage.setItem('sm_gameId', joinGameId);
-
-        Session.set('message', 'Game on! Player 2 has the first move.');
       }
     );
   },
 
-  'click #newGame': function(evt) {
-    Meteor.call('newGame', Session.get('deviceId'), function (err, res) {
+  'click #new-game-little': function(evt) {
+    var gameSize = 'Little';
+
+    Meteor.call('newGame', Session.get('deviceId'), gameSize, function(err, res) {
       var newGameId = res;
       Session.set('gameId', newGameId);
       localStorage.setItem ('sm_gameId', Session.get('gameId'));
-
-      Session.set('message', 'Waiting for challenger to join.');
     });
   },
-  
-  'click #leaveGame': function(evt) {
+
+  'click #new-game-big': function(evt) {
+    var gameSize = 'Big';
+
+    Meteor.call('newGame', Session.get('deviceId'), gameSize, function(err, res) {
+      var newGameId = res;
+      Session.set('gameId', newGameId);
+      localStorage.setItem ('sm_gameId', Session.get('gameId'));
+    });
+  },
+
+  'click #leave-game': function(evt) {
     var conf = window.confirm('Really? End this game?');
     if (conf == true) {
-      Meteor.call('removeMyGame', Session.get('gameId'), Session.get('deviceId'));
+      Meteor.call('leaveGame', Session.get('gameId'), Session.get('deviceId'));
       Session.set('gameId', '');
       localStorage.setItem('sm_gameId', '');
     }
+  },
 
+  'click #restart-game': function(evt) {
+    Meteor.call('newGame', Session.get('deviceId'), null, Session.get('gameId'), function(err, res) {
+      console.log(res);
+    });
   }
 });
