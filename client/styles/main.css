@@ -11,7 +11,7 @@ html {
 body {
   background-color: #3f5467;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  font-size: 1em;
+  font-size: 1rem;
   padding: 0 2% 1% 2%;
 }
 
@@ -19,7 +19,12 @@ h1 {
   margin: 0.8rem 0;
 }
 
-input[type=button]{
+.flex-container {
+  display: flex;
+  display: -webkit-flex;
+}
+
+input[type=submit]{
   background-color: lightblue;
   color: #5C5C5C;
   font-size: 1rem;
@@ -33,20 +38,69 @@ input[type=button]{
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
 
-input[type=button]:hover, input[type=button]:focus{
+input[type=submit]:hover, input[type=submit]:focus{
   background-color: #5b96a9;
   color: #242424;
   border-color: #44707f;
   transition: background-color 0.5s, color 0.5s, border-color 0.5s;
 }
 
-/**Card Styling*/
+/*GameControl Template Specific Styling*/
+.button-spacing-around {
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+
+.button-spacing-between-700 {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  max-width: 700px;
+}
+
+.queue-message {
+  color: #EFEFEF;
+  max-width: 700px;
+}
+
+.instruction-text {
+  margin-top: 0.8rem;
+  margin-bottom: 1.8rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  border: 2px solid #EFEFEF;
+}
+.instruction-text p {
+  margin: 0.7em 0;
+}
+
+.instruction-text.no-queue {
+  text-align: center;
+  max-width: 440px;
+  padding: 13px 8px 15px;
+}
+
+.waiting-queue{
+  text-align: center;
+  max-width: 440px;
+  padding: 13px 8px 15px;
+  background-color: #EFEFEF;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.waiting-queue:hover{
+  background-color: grey;
+  transition: background-color 2s;
+}
+
+/**Card Grid/Match-container Template Styling*/
 .grid-container > ul {
   list-style-type: none;
   padding: 0;
 }
 
 li {
+  position: relative;
   box-sizing: content-box;
   display: inline-block;
   width: 50px;
@@ -57,16 +111,26 @@ li {
   margin: 4px 2px;
   text-align: center;
   vertical-align: middle;
-  font-size: 1.75em;
+  font-size: 1.75rem;
   background-size: 100% 200%;
   background-position: 0 0;
   background-image: linear-gradient(to bottom, lightblue 50%, white 50%);
   transition: background-position 0.3s, color 0.3s;
 }
 
+.icon {
+  font-size: 1.8rem;
+  position: relative;
+  bottom: 5px;
+}
+
 .tiny-score {
-  margin: -10px;
-  font-size: 0.5em;
+  font-size: 1rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto 1px auto;
 }
 
 .scoreboard {
@@ -74,10 +138,6 @@ li {
   border-radius: 5px;
   padding: 0;
   margin: 0;
-}
-
-.waiting-queue {
-  /*background: lightblue;*/
 }
 
 li.turned-down {
@@ -101,7 +161,7 @@ li.turned-up.player-1 {
 }
 
 
-/*Module layout and styling*/
+/*Matches Template Styling*/
 header.head-container {
   color: lightblue;
 }
@@ -121,11 +181,16 @@ header.head-container {
 .match-container {
   display: inline-block;
   vertical-align: top;
-  width: 49%;
+  width: 48%;
   background-color: white;
   border-radius: 5px;
   color: #5C5C5C;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1rem 0.8rem;
+  min-height: 130px;
+}
+
+.match-container:first-of-type{
+  margin-right: 1%;
 }
 
 .match-container h3{
@@ -143,8 +208,13 @@ header.head-container {
   font-weight: bold;
 }
 
+.score {
+  line-height: 30px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
 
-/*Flexbox layout setup*/
+/*Flexbox layout setup for Game board*/
 .game-ui-flex {
   max-width: 2000px;
   text-align: center;
@@ -160,12 +230,10 @@ header.head-container {
 }
 
 .scoreboard-p0, .scoreboard-p1{
-  flex-basis: 8rem;
-  -webkit-flex-basis: 8rem;
+  flex-basis: 10rem;
+  -webkit-flex-basis: 10rem;
   align-self: center;
   -webkit-align-self: center;
-  padding: 10px;
-  text-align: center;
   margin: 0.2rem auto 0.5rem;
 }
 
@@ -187,9 +255,8 @@ header.head-container {
   text-align: center;
 }
 
-
-/*Media query to re-order flexboxes*/
-@media(max-width: 915px) {
+/*Media query to re-order flexbox Layout*/
+@media(max-width: 975px) {
   .grid-container{
     flex-basis: 100%;
     order: 1;
@@ -210,34 +277,32 @@ header.head-container {
   }
 }
 
+/*Modal window*/
 
-/*Make blink animation!*/
-.alert-blink {
-  /*display: inline-block;*/
-  color: red;
-  animation: color 1s infinite;
-  animation-direction: alternate;
-  animation-name: alert-blink;
-  -moz-animation: color 1s infinite;
-  -moz-animation-direction: alternate;
-  -moz-animation-name: alert-blink;
-  -webkit-animation: color 1s infinite;
-  -webkit-animation-direction: alternate;
-  -webkit-animation-name: alert-blink;
+.overlay {
+  position: absolute;
+  box-sizing: content-box;
+  max-width: 700px;
+  height: 230px;
+  top: 30%;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: 0.8rem auto;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  z-index: 99999;
+  opacity:50;
+  border: 2px solid white;
+  transition: opacity 10s;
 }
-
-@keyframes alert-blink {
-  to {
-    color: orange;
-  }
-}
-@-webkit-keyframes alert-blink {
-  to {
-    color: orange;
-  }
-}
-@-moz-keyframes alert-blink {
-  to {
-    color: orange;
-  }
+.overlay-content {
+  padding: 10px;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: #EFEFEF;
 }

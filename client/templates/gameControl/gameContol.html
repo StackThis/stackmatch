@@ -1,17 +1,39 @@
 <template name='GameControl'>
   {{#if gameInProgress}}
-    <input type=button id='leaveGame' value='Leave Game'>
+    <div class='flex-container button-spacing-around'>
+      <input type='submit' id='leave-game' value='Leave Game'>
+      <input type='submit' id='restart-game' value='Restart Game'>
+    </div>
     <section class="game-ui-flex">
       {{> Grid}}
       {{> Matches}}
     </section>
-    {{else}}
-    <input type=button id='newGame' value='Start New Game'>
-    <p>Click a game below to join it.</p>
+
+  {{else}}
+    <section class='queue-message instruction-text'>
+      <p>Gridmatch is based on the turn-based card matching game commonly known as concentration.</p>
+      <p>Each player takes a turn flipping two cards face up. If the cards match, they will add to their score and are removed from play. If the cards don't match, they are flipped back face down before the next turn.</p>
+      <p>The twists in this version are that each matching pair has a different score added to your total, and to beware of the “bomb” cards! They will subtract points when accidentally matched.</p>
+      <p>Enjoy!</p>
+    </section>
+
+    <div class='flex-container button-spacing-between-700'>
+      <input type='submit' id='new-game-little' value='Queue up a little game (40)'>
+      <p>OR</p>
+      <input type='submit' id='new-game-big' value='Queue up a big game (56)'>
+    </div>
+
+    <h4 class='queue-message'>
+      ... and wait for someone to challenge you. Or click on a queued game below to join someone else's game.
+    </h4>
     {{#each gamesWaiting}}
       <p id='{{_id}}' class='waiting-queue'>
-        <i class="fa fa-toggle-right"></i> Waiting for challenger. (Game created at {{formatDate timestamp 'LT'}})
+        <i class="fa fa-toggle-right"></i> {{gridSize}} game waiting for challenger<br> (Game created at {{formatDate timestamp 'LT'}})
       </p>
     {{/each}}
+
+    {{#unless gamesWaiting}}
+      <h4 class='queue-message instruction-text no-queue'><strong>No Games Currently in Queue!</strong> {{timestamp}}</h4>
+    {{/unless}}
   {{/if}}
 </template>

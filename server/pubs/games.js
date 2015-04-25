@@ -28,6 +28,8 @@ Meteor.publish('myGame', function (gameId) {
 
   var cursor = Games.find({_id: gameId});
   var game = cursor.fetch()[0];
+  if (typeof game !== 'object') return;
+  
   var gridArray;
   var handle = cursor.observeChanges({
     removed: function(id) {
