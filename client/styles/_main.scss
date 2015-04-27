@@ -1,64 +1,7 @@
-/*Base*/
-*, *:before, *:after {
-  box-sizing: inherit;
-}
 
-html {
-  font-size: 100%;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #3f5467;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  font-size: 1rem;
-  padding: 0 2% 1% 2%;
-}
-
-h1 {
-  margin: 0.8rem 0;
-}
-
-.flex-container {
-  display: flex;
-  display: -webkit-flex;
-}
-
-input[type=submit]{
-  background-color: lightblue;
-  color: #5C5C5C;
-  font-size: 1rem;
-  border-radius: 5px;
-  text-align: center;
-  padding: .4rem .6rem;
-  border-top: none;
-  border-left: none;
-  border-right: .13rem #86c5da solid;
-  border-bottom: .13rem #86c5da solid;
-  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
-}
-
-input[type=submit]:hover, input[type=submit]:focus{
-  background-color: #5b96a9;
-  color: #242424;
-  border-color: #44707f;
-  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
-}
-
-/*GameControl Template Specific Styling*/
-.button-spacing-around {
-  justify-content: space-around;
-  -webkit-justify-content: space-around;
-}
-
-.button-spacing-between-700 {
-  justify-content: space-between;
-  -webkit-justify-content: space-between;
-  max-width: 700px;
-}
-
+//Game Intro/Game Control Modules
 .queue-message {
-  color: #EFEFEF;
+  color: $light-text;
   max-width: 700px;
 }
 
@@ -66,9 +9,9 @@ input[type=submit]:hover, input[type=submit]:focus{
   margin-top: 0.8rem;
   margin-bottom: 1.8rem;
   padding: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
-  border: 2px solid #EFEFEF;
+  background: $transparent-black;
+  border-radius: $standard-border-radius;
+  border: 2px solid $light-text;
 }
 .instruction-text p {
   margin: 0.7em 0;
@@ -84,13 +27,13 @@ input[type=submit]:hover, input[type=submit]:focus{
   text-align: center;
   max-width: 440px;
   padding: 13px 8px 15px;
-  background-color: #EFEFEF;
-  border-radius: 5px;
+  background-color: $light-text;
+  border-radius: $standard-border-radius;
   margin-bottom: 5px;
 }
 .waiting-queue:hover{
-  background-color: grey;
-  transition: background-color 2s;
+  background-color: darken($light-text, 10%);
+  transition: background-color 0.5s;
 }
 
 /**Card Grid/Match-container Template Styling*/
@@ -99,22 +42,23 @@ input[type=submit]:hover, input[type=submit]:focus{
   padding: 0;
 }
 
-li {
+.grid-container li, .scoreboard li {
   position: relative;
   box-sizing: content-box;
   display: inline-block;
   width: 50px;
   height: 50px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: $standard-border-radius;
   padding: 4px;
   margin: 4px 2px;
   text-align: center;
   vertical-align: middle;
   font-size: 1.75rem;
+  //background 'slide' animations
   background-size: 100% 200%;
   background-position: 0 0;
-  background-image: linear-gradient(to bottom, lightblue 50%, white 50%);
+  background-image: linear-gradient(to bottom, $cardback-color 50%, $cardfront-color 50%);
   transition: background-position 0.3s, color 0.3s;
 }
 
@@ -134,36 +78,36 @@ li {
 }
 
 .scoreboard {
-  background: white;
-  border-radius: 5px;
+  background: $game-info-bgc;
+  border-radius: $standard-border-radius;
   padding: 0;
   margin: 0;
 }
 
 li.turned-down {
-  background: lightblue;
-  color: lightblue;
+  background: $cardback-color;
+  color: $cardback-color;
   transition: background-color 0.3s, color 0.3s;
 }
 
 li.turned-up.player-1, li.turned-up.player-0 {
-  color: white;
+  color: $cardfront-color;
   background-position: 0 100%;
   transition: background-position 0.3s, color 0.3s;
 }
 
 li.turned-up.player-0 {
-  background-image: linear-gradient(to bottom, lightblue 50%, indigo 50%);
+  background-image: linear-gradient(to bottom, $cardback-color 50%, $player0-color 50%);
 }
 
 li.turned-up.player-1 {
-  background-image: linear-gradient(to bottom, lightblue 50%, darkgreen 50%);
+  background-image: linear-gradient(to bottom, $cardback-color 50%, $player1-color 50%);
 }
 
 
 /*Matches Template Styling*/
 header.head-container {
-  color: lightblue;
+  color: $cardback-color;
 }
 
 .game-control-container {
@@ -182,9 +126,9 @@ header.head-container {
   display: inline-block;
   vertical-align: top;
   width: 48%;
-  background-color: white;
-  border-radius: 5px;
-  color: #5C5C5C;
+  background-color: $game-info-bgc;
+  border-radius: $standard-border-radius;
+  color: darken($main-bgc, 5%);
   padding: 0.5rem 1rem 0.8rem;
   min-height: 130px;
 }
@@ -199,12 +143,12 @@ header.head-container {
 }
 
 .player0 {
-  color: indigo;
+  color: $player0-color;
   font-weight: bold;
 }
 
 .player1 {
-  color: darkgreen;
+  color: $player1-color;
   font-weight: bold;
 }
 
@@ -289,12 +233,12 @@ header.head-container {
   bottom: 0;
   left: 0;
   margin: 0.8rem auto;
-  background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+  background: $transparent-black;
+  border-radius: $standard-border-radius;
   z-index: 99999;
   opacity:50;
   border: 2px solid white;
-  transition: opacity 10s;
+  transition: opacity 4s;
 }
 .overlay-content {
   padding: 10px;
@@ -304,5 +248,5 @@ header.head-container {
   right: 0;
   bottom: 0;
   left: 0;
-  color: #EFEFEF;
+  color: $light-text;
 }

@@ -1,0 +1,30 @@
+//Colors
+$color1: white;
+$color2: rgba(0, 0, 0, 0.8); //transparent black
+$color3: #3f5467; //Drk grey-blue
+$color4: #EFEFEF; //Lt Grey
+$color5: lightblue;
+$color6: indigo;
+$color7: darkgreen;
+
+//Applied Colors
+$main-bgc:            $color3;
+$game-info-bgc:       $color1;
+$transparent-black:   $color2;
+$light-text:          $color4;
+$cardback-color:      $color5;
+$cardfront-color:     $color1;
+$player0-color:       $color6;
+$player1-color:       $color7;
+
+$button-color:        $color5;
+
+
+
+//Typography
+$default-fonts: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+
+
+//border styling
+$standard-border-radius: 5px;
+

@@ -1,0 +1,50 @@
+//General Submit Buttons
+
+input[type=submit]{
+  background-color: $button-color;
+  color: darken($main-bgc, 10%);
+  font-size: 1rem;
+  border-radius: $standard-border-radius;
+  text-align: center;
+  padding: 0.4rem 0.6rem;
+  border-top: none;
+  border-left: none;
+  border-right: 0.13rem darken($button-color, 5%) solid;
+  border-bottom: 0.13rem darken($button-color, 5%) solid;
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+input[type=submit]:hover, input[type=submit]:focus{
+  background-color: darken($button-color, 15%);
+  color: darken($main-bgc, 20%);
+  border-color: darken($button-color, 25%);
+  transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+
+
+/*GameControl Template Specific Styling*/
+.flex-container {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+  & #leave-game, & #restart-game{
+    margin-right: 10px;
+  }
+}
+
+.button-spacing-around {
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+
+.button-spacing-between-700 {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+  max-width: 700px;
+}
+
