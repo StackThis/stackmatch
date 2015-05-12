@@ -1,8 +1,11 @@
-Template.Grid.helpers ({
+Template.Grid.helpers({
   shuffledCards: function() {
+    var curGameId;
+    var game;
+
     if (Session.get('gameId')) {
-      var curGameId = Session.get('gameId');
-      var game = Grids.findOne(curGameId);
+      curGameId = Session.get('gameId');
+      game = Grids.findOne(curGameId);
 
       if (game) return game.grid;
       return false;
