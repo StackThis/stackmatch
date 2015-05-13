@@ -20,7 +20,7 @@
       </div>
     </section>
 
-    <div class='flex-container button-spacing-around'>
+    <div class='new-game-buttons flex-container flex-spacing-around'>
       <input type='submit' id='new-game-little' value='Queue up a little game (40)'>
       <p class="queue-message">OR</p>
       <input type='submit' id='new-game-big' value='Queue up a big game (56)'>
@@ -31,14 +31,16 @@
     </h4>
 
     {{#each gamesWaiting}}
-      <p id='{{_id}}' class='waiting-queue'>
-        <span class="fa-stack">
-          <i class="fa fa-square-o fa-stack-2x"></i>
-          <i class="fa fa-user-plus fa-stack-1x"></i>
-        </span>
-        <span>{{gridSize}} game waiting for challenger</span>
-        <span class="timestamp">Added {{formatDate timestamp}}</span>
-      </p>
+      <section id='{{_id}}' class='waiting-queue flex-container flex-spacing-between'>
+        <p>
+          <span class="fa-stack">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-user-plus fa-stack-1x"></i>
+          </span>
+          <span>{{gridSize}} game waiting for challenger</span>
+        </p>
+        <p class="timestamp">Added {{formatDate timestamp}}</p>
+      </section>
     {{/each}}
 
     {{#unless gamesWaiting}}

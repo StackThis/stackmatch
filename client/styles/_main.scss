@@ -1,4 +1,8 @@
 //Game Intro/Game Control Modules
+header.head-container {
+  color: $cardback-color;
+}
+
 .queue-message {
   color: $light-text;
   max-width: 700px;
@@ -36,9 +40,20 @@
   }
 }
 
+.new-game-buttons {
+//Wrapper for new game queue buttons (in addition to flex container in _layout.scss
+  @media(max-width: 550px) {
+    /* Display vertical center stack when smaller than breakpoint */
+    display: block;
+    text-align: center;
+  }
+  & input[type=submit] {
+    min-height: 50px;
+    margin-bottom: 5px;
+  }
+}
+
 .waiting-queue{
-  text-align: left;
-  vertical-align: middle;
   max-width: 700px;
   padding: 13px 13px 15px;
   background-color: $light-text;
@@ -49,11 +64,20 @@
     transition: background-color 0.5s;
     cursor: pointer;
   }
-}
-
-.timestamp {
-  font-style: italic;
-  float: right;
+  & p {
+    display: inline-block;
+    margin: 0;
+    align-self: center;
+    //flex property
+    &:first-of-type{
+      margin-right: 8px;
+    }
+  }
+  & .timestamp {
+    font-style: italic;
+    float: right;
+    //no-flex fallback
+  }
 }
 
 .no-queue {
@@ -130,9 +154,6 @@ li.turned-up.player-1 {
 }
 
 /*Matches Template Styling*/
-header.head-container {
-  color: $cardback-color;
-}
 
 .game-control-container {
   width: 100%;
@@ -173,6 +194,9 @@ header.head-container {
     border-radius: $standard-border-radius;
     padding: 5px;
     margin: 0;
+    min-height: 42px;
+    min-width: 35px;
+    //ensure empty match list card
     & li {
       /*Styling for the match-list cards*/
       width: 30px;

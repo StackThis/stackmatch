@@ -37,7 +37,7 @@ Template.GameControl.events ({
     }
   },
 
-  'click p.waiting-queue': function(evt) {
+  'click section.waiting-queue': function(evt) {
     var joinGameId = this._id;
 
     Games.update(

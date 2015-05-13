@@ -3,6 +3,7 @@
   display: flex;
   display: -webkit-flex;
   max-width: 700px;
+  // flex-flow: row wrap;
 }
 
 .flex-start {
@@ -13,12 +14,12 @@
   }
 }
 
-.button-spacing-around {
+.flex-spacing-around {
   justify-content: space-around;
-  -webkit-justify-content: space-around;
+  -webkit-justify-content: space-around
 }
 
-.button-spacing-between {
+.flex-spacing-between {
   justify-content: space-between;
   -webkit-justify-content: space-between;
 }
