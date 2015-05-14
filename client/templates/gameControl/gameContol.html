@@ -1,6 +1,6 @@
 <template name='GameControl'>
   {{#if gameInProgress}}
-    <div class='flex-container button-spacing-around'>
+    <div class='flex-start'>
       <input type='submit' id='leave-game' value='Leave Game'>
       <input type='submit' id='restart-game' value='Restart Game'>
     </div>
@@ -11,29 +11,40 @@
 
   {{else}}
     <section class='queue-message instruction-text'>
-      <p>Gridmatch is based on the turn-based card matching game commonly known as concentration.</p>
-      <p>Each player takes a turn flipping two cards face up. If the cards match, they will add to their score and are removed from play. If the cards don't match, they are flipped back face down before the next turn.</p>
-      <p>The twists in this version are that each matching pair has a different score added to your total, and to beware of the “bomb” cards! They will subtract points when accidentally matched.</p>
-      <p>Enjoy!</p>
+      <h3 id="instructions" class="instructions-heading" tabindex="0">Instructions <span id="instructionsSymbol"><i class="fa fa-toggle-down fa-lg"></i></span></h3>
+      <div id="instructionsWrapper" class="instructions-hidden">
+        <p>GridMatch is based on the turn-based card matching game commonly known as concentration.</p>
+        <p>Each player takes a turn flipping two cards face up. If the cards match, they will add to their score and are removed from play. If the cards don't match, they are flipped back face down before the next turn.</p>
+        <p>The twists in this version are that each matching pair has a different score added to your total, and to beware of the “bomb” cards! They will subtract points when accidentally matched.</p>
+        <p>Enjoy!</p>
+      </div>
     </section>
 
-    <div class='flex-container button-spacing-between-700'>
+    <div class='new-game-buttons flex-container flex-spacing-around'>
       <input type='submit' id='new-game-little' value='Queue up a little game (40)'>
-      <p>OR</p>
+      <p class="queue-message">OR</p>
       <input type='submit' id='new-game-big' value='Queue up a big game (56)'>
     </div>
 
     <h4 class='queue-message'>
-      ... and wait for someone to challenge you. Or click on a queued game below to join someone else's game.
+      ...and wait for someone to challenge you. Or click on a queued game below to join someone else's game.
     </h4>
+
     {{#each gamesWaiting}}
-      <p id='{{_id}}' class='waiting-queue'>
-        <i class="fa fa-toggle-right"></i> {{gridSize}} game waiting for challenger<br> (Game created at {{formatDate timestamp 'LT'}})
-      </p>
+      <section id='{{_id}}' class='waiting-queue flex-container flex-spacing-between'>
+        <p>
+          <span class="fa-stack">
+            <i class="fa fa-square-o fa-stack-2x"></i>
+            <i class="fa fa-user-plus fa-stack-1x"></i>
+          </span>
+          <span>{{gridSize}} game waiting for challenger</span>
+        </p>
+        <p class="timestamp">Added {{formatDate timestamp}}</p>
+      </section>
     {{/each}}
 
     {{#unless gamesWaiting}}
-      <h4 class='queue-message instruction-text no-queue'><strong>No Games Currently in Queue!</strong> {{timestamp}}</h4>
+      <h4 class='queue-message instruction-text no-queue'><strong>No Games Currently in Queue</strong> {{timestamp}}</h4>
     {{/unless}}
   {{/if}}
 </template>

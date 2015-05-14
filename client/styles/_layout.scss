@@ -1,0 +1,91 @@
+/*GameControl Template Specific Styling - button layout*/
+.flex-container {
+  display: flex;
+  display: -webkit-flex;
+  max-width: 700px;
+  // flex-flow: row wrap;
+}
+
+.flex-start {
+  display: flex;
+  align-items: flex-start;
+  & #leave-game, & #restart-game{
+    margin-right: 10px;
+  }
+}
+
+.flex-spacing-around {
+  justify-content: space-around;
+  -webkit-justify-content: space-around
+}
+
+.flex-spacing-between {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+
+
+/*Flexbox layout setup for Game board*/
+.game-ui-flex {
+  max-width: 2000px;
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  display: -webkit-flex;
+  -webkit-flex-flow: row wrap;
+}
+
+.grid-container{
+  order: 2;
+  -webkit-order: 2;
+}
+
+.scoreboard-p0, .scoreboard-p1{
+  flex-basis: 10rem;
+  -webkit-flex-basis: 10rem;
+  align-self: center;
+  -webkit-align-self: center;
+  margin: 0.2rem auto 0.5rem;
+  text-align: center;
+}
+
+.scoreboard-p0{
+  order: 1;
+  -webkit-order: 1;
+}
+
+.scoreboard-p1{
+  order: 3;
+  -webkit-order: 3;
+}
+
+.matches {
+  order: 4;
+  flex-basis: 100%;
+  -webkit-order: 4;
+  -webkit-flex-basis: 100%;
+  text-align: center;
+}
+
+/*Media query to re-order flexbox Layout*/
+@media(max-width: 975px) {
+  .grid-container{
+    flex-basis: 100%;
+    order: 1;
+    -webkit-flex-basis: 100%;
+    -webkit-order: 1;
+  }
+  .grid-container ul {
+    max-width: 600px;
+    margin: auto;
+  }
+  .scoreboard-p0{
+    order: 2;
+    -webkit-order: 2;
+  }
+  .scoreboard-p1{
+    order: 3;
+    -webkit-order: 3;
+  }
+}

@@ -12,7 +12,7 @@
       </section>
     {{/if}}
 
-    
+
       <!-- {{#if my}}
       <section class='overlay'>
         <div class='overlay-content'>
@@ -21,8 +21,8 @@
         </div>
       </section>
       {{/if}} -->
-    
-    
+
+
     <section class="scoreboard scoreboard-p0">
       <div class="score player{{my.playerIdx}} {{whoseTurn my.turn}}">
         {{my.name}}: {{my.score}}
@@ -33,30 +33,34 @@
         {{your.name}}: {{your.score}}
       </div>
     </section>
-    
+
 
     <div class="matches">
       <section class='match-container my-matches'>
         <h3>My Matches</h3>
-        <ul class="scoreboard">
-          {{#each my.matches}}
-            <li id='grid-{{idx}}' class='{{class}}'>
-              <div class='icon icon-{{val}}'></div>
-              <div class='tiny-score'>{{score}}</div>
-            </li>
-          {{/each}}
-        </ul>
+        <div class="match-list-wrapper">
+          <ul class="match-list">
+            {{#each my.matches}}
+              <li id='grid-{{idx}}' class='{{class}}'>
+                <div class='icon icon-{{val}}'></div>
+                <div class='tiny-score'>{{score}}</div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
       </section>
       <section class='match-container your-matches'>
         <h3>Opponent's Matches</h3>
-        <ul class="scoreboard">
-          {{#each your.matches}}
-            <li id='grid-{{idx}}' class='{{class}}'>
-              <div class='icon icon-{{val}}'></div>
-              <div class='tiny-score'>{{score}}</div>
-            </li>
-          {{/each}}
-        </ul>
+        <div class="match-list-wrapper">
+          <ul class="match-list">
+            {{#each your.matches}}
+              <li id='grid-{{idx}}' class='{{class}}'>
+                <div class='icon icon-{{val}}'></div>
+                <div class='tiny-score'>{{score}}</div>
+              </li>
+            {{/each}}
+          </ul>
+        </div>
       </section>
     </div>
 
