@@ -35,7 +35,7 @@ Template.Matches.helpers({
               gameScore.your.matches = doc.players[i].matches;
             }
           } else {
-            url = window.location.origin + '/#' + Session.get('gameId');
+            url = Meteor.absoluteUrl() + '#' + Session.get('gameId');
             gameScore.your.name = 'Waiting for challenger';
             gameScore.your.url = url;
             gameScore.your.turn = true;
