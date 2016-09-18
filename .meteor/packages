@@ -7,7 +7,6 @@
 fortawesome:fontawesome
 msavin:mongol
 momentjs:moment
-fourseven:scss
 meteor-base
 mobile-experience
 mongo
@@ -24,3 +23,5 @@ check
 standard-minifier-css
 standard-minifier-js
 shell-server
+fourseven:scss
+seba:minifiers-autoprefixer
