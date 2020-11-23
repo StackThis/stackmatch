@@ -1,0 +1,21 @@
+{
+  "name": "gridmatch",
+  "version": "1.0.0",
+  "description": "A game of 'concentration'",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StackThis/stackmatch.git"
+  },
+  "author": "Paul Laskowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/StackThis/stackmatch/issues"
+  },
+  "homepage": "https://github.com/StackThis/stackmatch#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.12.5"
+  }
+}
