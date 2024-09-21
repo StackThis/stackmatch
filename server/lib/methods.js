@@ -1,6 +1,6 @@
 Meteor.methods({
   newGame: function (deviceId, gameSize, gameId) {
-    const initializeGame = function (replayId, deviceId, deck) {
+    const initializeGame = async function (replayId, deviceId, deck) {
       var cardsShuffled = deck.shuffleDeck().map(function (value, index) {
         var score;
         if (value < this.bombs) {
@@ -19,7 +19,7 @@ Meteor.methods({
 
       // initialize new game entry in db
       if (replayId) {
-        return Games.update(
+        return await Games.updateAsync(
           { _id: replayId },
           {
             $set: {
@@ -33,7 +33,7 @@ Meteor.methods({
           }
         );
       } else {
-        return Games.insert({
+        return await Games.insertAsync({
           grid: cardsShuffled,
           gridSize: gameSize,
           gameStatus: "fresh",
@@ -62,8 +62,8 @@ Meteor.methods({
     return initializeGame(gameId, deviceId, deck);
   },
 
-  leaveGame: function (gameId, deviceId) {
-    Games.update(
+  leaveGame: async function (gameId, deviceId) {
+    await Games.updateAsync(
       { _id: gameId },
       {
         $pull: { players: { device: deviceId } },
@@ -72,13 +72,13 @@ Meteor.methods({
     );
   },
 
-  removeGame: function (gameId) {
+  removeGame: async function (gameId) {
     //only remove dirty game
-    Games.remove({ _id: gameId, gameStatus: "dirty" });
+    await Games.removeAsync({ _id: gameId, gameStatus: "dirty" });
   },
 
-  flipUpCard: function (gameId, thisMove, lastMove) {
-    Games.update(
+  flipUpCard: async function (gameId, thisMove, lastMove) {
+    await Games.updateAsync(
       { _id: gameId, "grid.idx": thisMove.cardIdx },
       {
         $set: { "grid.$.class": "turned-up player-" + thisMove.playerIdx },
@@ -87,14 +87,14 @@ Meteor.methods({
     );
 
     if (thisMove.turnIdx === 2) {
-      curGameData = Games.findOne({ _id: gameId });
+      curGameData = await Games.findOneAsync({ _id: gameId });
       if (
         curGameData.grid[thisMove.cardIdx].val ===
         curGameData.grid[lastMove.cardIdx].val
       ) {
         var thisMatch = curGameData.grid[thisMove.cardIdx];
         if (thisMove.playerIdx === 0) {
-          Games.update(
+          await Games.updateAsync(
             { _id: gameId },
             {
               $set: {
@@ -105,7 +105,7 @@ Meteor.methods({
             }
           );
         } else {
-          Games.update(
+          await Games.updateAsync(
             { _id: gameId },
             {
               $set: {
@@ -118,12 +118,12 @@ Meteor.methods({
         }
         return "Match Found";
       } else {
-        Meteor.setTimeout(function () {
-          Games.update(
+        Meteor.setTimeout(async function () {
+          await Games.updateAsync(
             { _id: gameId, "grid.idx": thisMove.cardIdx },
             { $set: { "grid.$.class": "turned-down" } }
           );
-          Games.update(
+          await Games.updateAsync(
             { _id: gameId, "grid.idx": lastMove.cardIdx },
             { $set: { "grid.$.class": "turned-down" } }
           );

@@ -18,5 +18,10 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "jquery": "^3.6.4"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "postcss-load-config": "^6.0.1"
   }
 }
